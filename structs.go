@@ -95,10 +95,10 @@ type GenerateAccessTokenParams struct {
 }
 
 type WebhookMessageInteractionParams struct {
-	ReceiveMessageFromAgent    bool `json:"receive_message_from_agent"`
-	ReceiveMessageFromCustomer bool `json:"receive_message_from_customer"`
-	StatusMessage              bool `json:"status_message"`
-	WebhookUrl                 bool `json:"webhook_url"`
+	ReceiveMessageFromAgent    bool   `json:"receive_message_from_agent"`
+	ReceiveMessageFromCustomer bool   `json:"receive_message_from_customer"`
+	StatusMessage              bool   `json:"status_message"`
+	WebhookUrl                 string `json:"webhook_url"`
 }
 
 type WebhookMessageInteractionResponse struct {
