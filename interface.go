@@ -18,4 +18,6 @@ type HTTPServiceClient interface {
 
 	// SendWhatsAppDirect ...
 	SendWhatsAppDirect(ctx context.Context, accessToken string, request interface{}) (returnData SendWhatsAppDirectResponse, errorResponse ResponseError, resp *http.Response, err error)
+
+	WebhookMessageInteraction(ctx context.Context, accessToken string, request interface{}) (returnData WebhookMessageInteractionResponse, errorResponse ResponseError, resp *http.Response, err error)
 }

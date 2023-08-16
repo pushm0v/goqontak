@@ -135,3 +135,18 @@ func (s *Service) lookUpErrStatusCode(statusCode int) (err error) {
 
 	return
 }
+
+func (s *Service) WebhookMessageInteraction(ctx context.Context, accessToken string, request interface{}) (returnData WebhookMessageInteractionResponse, errorResponse ResponseError, resp *http.Response, err error) {
+	values, ok := request.(WebhookMessageInteractionParams)
+	if !ok {
+		err = ErrStatusBadRequest
+		return
+	}
+
+	body, _ := json.Marshal(values)
+	req, _ := s.newRequest(ctx, http.MethodPut, PathWebhookMessageInteraction, string(body))
+	req.Header.Add(HeaderKeyAuthorization, fmt.Sprintf("Bearer %s", accessToken))
+	resp, err = s.do(ctx, req, &returnData, &errorResponse)
+
+	return
+}
